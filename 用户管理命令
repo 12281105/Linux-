@@ -100,4 +100,31 @@ chown oracle:dba text
 
 	     或是：userdel: user test is currently used by process 2417
 	           userdel: cannot open /etc/subuid
-使用命令 vipw -s
+解决方法：
+
+纠结了许久，忽然想起了以前在一本看到过一个vipw的命令，，于是。。找man。。。。开始干活了。。
+
+root@ www.linuxidc.com :/home# vipw
+
+找到你之前创建的用户，用dd删除那行(记得保存:wq or :x)。。之后。
+
+root@ www.linuxidc.com :/home# vipw -s
+
+找到那个用户所属组，也dd干掉即可(记得保存:wq or :x)
+
+为什么要vipw -s呢？原因只有一个，必须保证数据的一致性，不然可能会造成系统崩溃或者一些莫名其妙的问题 
+
+命令小解：
+
+root@ www.linuxidc.com :/home# vipw --help 
+
+用法：vipw [选项]
+
+选项： 
+
+  -g, --group                  编辑 group 数据库  
+  -h, --help                    显示此帮助信息并推出  
+  -p, --passwd                  编辑 passwd 数据库  
+  -q, --quiet                  安静模式  
+  -R, --root CHROOT_DIR        chroot 到的目录  
+  -s, --shadow                  编辑 shadow 或 gshadow 数据库 
