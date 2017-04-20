@@ -4,3 +4,6 @@ man 命令
 
 （2）查看命令位置
 which 命令
+
+（3）chown和chmod的区别
+http://blog.csdn.net/doupei2006/article/details/8015986
